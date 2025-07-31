@@ -1,0 +1,41 @@
+<div class="notes-list-main">
+  <div class="notes-toolbar">
+    <input
+      type="text"
+      placeholder="Search notes..."
+      [(ngModel)]="searchQuery"
+      (input)="applySearch()"
+      class="search-bar"
+    />
+    <button class="fab" (click)="onOpenModal()">
+      <span class="material-icons">add</span>
+    </button>
+  </div>
+  <div class="notes-grid">
+    <ng-container *ngIf="filteredNotes.length > 0; else noNotes">
+      <div class="note-card" *ngFor="let note of filteredNotes">
+        <div class="note-card-content" (click)="editNote(note)">
+          <div class="note-title">{{ note.title }}</div>
+          <div class="note-content">{{ note.content }}</div>
+        </div>
+        <div class="note-actions">
+          <button title="Edit" (click)="editNote(note)">
+            <span class="material-icons">edit</span>
+          </button>
+          <button title="Delete" (click)="deleteNote(note)">
+            <span class="material-icons" style="color: #d32f2f;">delete</span>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noNotes>
+      <div class="no-notes-text">No notes to display.</div>
+    </ng-template>
+  </div>
+  <!-- Note Modal -->
+  <app-note-modal
+    *ngIf="modalOpen"
+    [note]="modalNote"
+    (close)="onCloseModal($event)"
+  ></app-note-modal>
+</div>

@@ -1,0 +1,113 @@
+.notes-list-main {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 0 16px 0;
+}
+
+.notes-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 14px;
+}
+
+.search-bar {
+  min-width: 220px;
+  background: #f5f7fb;
+  color: #424242;
+  border: 1px solid #eeeeee;
+  border-radius: 7px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.fab {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(25, 118, 210, .1);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.fab:hover {
+  background: #115293;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(236px, 1fr));
+  gap: 18px;
+}
+
+.note-card {
+  background: #fffdfa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px 12px 12px 16px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px 0 rgba(25, 118, 210, .03);
+  transition: box-shadow 0.15s;
+  cursor: pointer;
+}
+
+.note-card:hover {
+  box-shadow: 0 8px 36px 0 rgba(25, 118, 210, 0.09);
+}
+
+.note-title {
+  font-weight: 600;
+  color: #1976d2;
+  font-size: 1.12rem;
+  margin-bottom: 0.36em;
+  word-break: break-word;
+}
+
+.note-content {
+  color: #424242;
+  font-size: 0.98rem;
+  line-height: 1.22em;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.note-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.note-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffe082;
+  font-size: 1.2rem;
+  transition: color 0.15s;
+  padding: 4px;
+}
+
+.note-actions button:hover .material-icons {
+  color: #1976d2;
+}
+
+.no-notes-text {
+  text-align: center;
+  color: #bdbdbd;
+  font-size: 1.09rem;
+  padding: 35px 0;
+}

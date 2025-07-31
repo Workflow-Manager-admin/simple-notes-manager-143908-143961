@@ -1,0 +1,25 @@
+<div class="modal-overlay">
+  <div class="modal-dialog">
+    <div class="modal-title">
+      {{ note?.id ? 'Edit Note' : 'Create Note' }}
+    </div>
+    <form (ngSubmit)="saveNote()" autocomplete="off">
+      <label>
+        <span>Title</span>
+        <input type="text" [(ngModel)]="noteData.title" name="title" maxlength="60" required />
+      </label>
+      <label>
+        <span>Content</span>
+        <textarea [(ngModel)]="noteData.content" name="content" rows="5" maxlength="1500" required></textarea>
+      </label>
+      <div *ngIf="errorMsg" class="modal-error">{{ errorMsg }}</div>
+      <div class="modal-actions">
+        <button type="button" (click)="cancel()" class="modal-btn secondary">Cancel</button>
+        <button type="submit" class="modal-btn primary" [disabled]="loading">
+          <span *ngIf="loading" class="loader"></span>
+          {{ note?.id ? 'Update' : 'Create' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

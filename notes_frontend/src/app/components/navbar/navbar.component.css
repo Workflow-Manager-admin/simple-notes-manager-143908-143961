@@ -1,0 +1,30 @@
+.navbar {
+  width: 100%;
+  min-height: 54px;
+  background: #ffffff;
+  border-bottom: 1.7px solid #1976d2;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 22px;
+  box-shadow: 0 2px 8px 0 rgba(25, 118, 210, 0.03);
+  font-family: inherit;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.brand-title {
+  color: #1976d2;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+.brand-icon {
+  font-size: 1.52rem;
+  color: #424242;
+}
