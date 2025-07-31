@@ -1,9 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NotesService } from '../../services/notes.service';
 import { Note } from '../../models/note.model';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
+// PUBLIC_INTERFACE
 @Component({
   selector: 'app-note-modal',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './note-modal.component.html',
   styleUrls: ['./note-modal.component.css']
 })

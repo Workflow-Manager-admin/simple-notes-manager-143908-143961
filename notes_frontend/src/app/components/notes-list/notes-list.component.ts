@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NotesService } from '../../services/notes.service';
 import { Note } from '../../models/note.model';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NoteModalComponent } from '../note-modal/note-modal.component';
 
-declare var confirm: any;
-
+// PUBLIC_INTERFACE
 @Component({
   selector: 'app-notes-list',
+  standalone: true,
+  imports: [CommonModule, FormsModule, NoteModalComponent],
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.css']
 })
@@ -16,7 +20,9 @@ export class NotesListComponent implements OnInit {
   modalOpen = false;
   modalNote: Note | null = null;
 
-  constructor(private notesService: NotesService) {}
+  // notesService is actually used; disable linter warning if persists
+  // eslint-disable-next-line no-unused-vars
+  constructor(public notesService: NotesService) {}
 
   ngOnInit(): void {
     this.fetchNotes();
@@ -54,10 +60,11 @@ export class NotesListComponent implements OnInit {
   }
 
   // PUBLIC_INTERFACE
-  onCloseModal(refresh = false): void {
+  onCloseModal(refresh: boolean | Event = false): void {
     this.modalOpen = false;
     this.modalNote = null;
-    if (refresh) {
+    // "refresh" can be a boolean from our modal or an Event from $event—only call fetchNotes if it's true
+    if (refresh === true) {
       this.fetchNotes();
     }
   }
@@ -70,7 +77,8 @@ export class NotesListComponent implements OnInit {
   // PUBLIC_INTERFACE
   deleteNote(note: Note): void {
     if (!note.id) return;
-    if (confirm(`Are you sure you want to delete "${note.title}"?`)) {
+    // eslint-disable-next-line no-undef
+    if (window.confirm(`Are you sure you want to delete "${note.title}"?`)) {
       this.notesService.deleteNote(note.id).subscribe(() => {
         this.fetchNotes();
       });
